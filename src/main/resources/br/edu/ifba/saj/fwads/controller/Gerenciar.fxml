@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="134.0" layoutY="25.0" style="-fx-font-weight: bold;" text="Configurações de Notificação">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <VBox fx:id="checklistAlerta" layoutX="26.0" layoutY="117.0" prefHeight="200.0" prefWidth="270.0" spacing="70.0">
+         <children>
+            <CheckBox fx:id="checkAlertaEmbarque" mnemonicParsing="false" text="Receber Alerta de Aproximação de Embarque " />
+            <CheckBox fx:id="checkAlertaTrajeto" mnemonicParsing="false" text="Receber Alerta de Mudança no Trajeto" />
+            <CheckBox fx:id="checkAlertaStatus" mnemonicParsing="false" text="Exibir Status de Lotação no Mapa" />
+         </children>
+      </VBox>
+      <HBox layoutX="367.0" layoutY="359.0" prefHeight="27.0" prefWidth="200.0" spacing="50.0">
+         <children>
+            <Button fx:id="btnNotificacaoSalvar" mnemonicParsing="false" text="Salvar " />
+            <Button fx:id="btnNotificacaoCancelar" mnemonicParsing="false" text="Cancelar" />
+         </children>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </HBox>
+   </children>
+</AnchorPane>
