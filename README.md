@@ -15,3 +15,9 @@ A equipe deve desenvolver as seguintes funcionalidades, com base na documentaç�
 - Conectividade (RNF06): O sistema de notificações deve ser resiliente a falhas de conexão, garantindo a entrega das mensagens assim que a conexão for restabelecida.
 - Escalabilidade (RNF07): A infraestrutura deve ser capaz de lidar com o envio de um grande volume de notificações simultâneas para milhares de usuários.
 - Compatibilidade (RNF03): O serviço de notificação push deve ser compatível e funcional tanto em dispositivos Android quanto iOS
+
+Glossario: 
+
+Linha: É uma rota por onde o unibus percorre recolhendo os passageiros
+Ponto: local de embarque na linha 
+Rota desvio: Uma rota secundaria para contornar algum evento e retornar a linha principal
