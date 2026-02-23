@@ -36,31 +36,45 @@
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Polyline?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="589.0" prefWidth="1001.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="908.0" prefWidth="1382.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <SplitPane dividerPositions="0.17417417417417416, 0.3923923923923924" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <SplitPane dividerPositions="0.24124124124124124, 0.5665665665665666" focusTraversable="true" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <items>
             <AnchorPane>
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
+                        <HBox alignment="TOP_CENTER" prefHeight="40.0" prefWidth="199.0">
+                           <children>
+                              <Label text="Para Onde Vamos?">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Separator prefWidth="200.0" />
                         <Label text="Qual seu ponto de embarque?" />
-                        <ChoiceBox prefHeight="26.0" prefWidth="275.0">
+                        <ChoiceBox prefHeight="26.0" prefWidth="270.0">
                            <items>
                               <FXCollections fx:factory="observableArrayList">
                                  <String fx:value="Ponto Urbs 2" />
@@ -92,16 +106,8 @@
                               </FXCollections>
                            </items>
                         </ChoiceBox>
-                     </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
-            <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
-               <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
                         <Label text="Qual o horario do embarque?" />
-                        <ChoiceBox prefHeight="26.0" prefWidth="275.0">
+                        <ChoiceBox prefHeight="26.0" prefWidth="270.0">
                            <items>
                               <FXCollections fx:factory="observableArrayList">
                                  <String fx:value="06:00" />
@@ -109,15 +115,39 @@
                               </FXCollections>
                            </items>
                         </ChoiceBox>
-                        <VBox prefHeight="69.0" prefWidth="139.0">
+                        <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="270.0" text="Solicitar Embarque">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin></Button>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
+               <children>
+                  <VBox prefHeight="565.0" prefWidth="291.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <HBox alignment="TOP_CENTER" prefHeight="51.0" prefWidth="443.0">
                            <children>
-                              <Label text="Motorista: Sr. José Almeida" />
-                              <Label text="Placa: PJA-2024" />
-                              <Label text="Horário: 06:00 - 22:00" />
-                              <Label text="Status: Em Trânsito" />
+                              <Label prefHeight="30.0" prefWidth="276.0" text="Configuração de Notificação ">
+                                 <font>
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <VBox fx:id="checklistAlerta" prefHeight="237.0" prefWidth="338.0" spacing="30.0">
+                           <children>
+                              <Separator prefWidth="200.0" />
+                              <CheckBox fx:id="checkAlertaEmbarque" mnemonicParsing="false" text="Receber Alerta de Aproximação de Embarque ">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </CheckBox>
+                              <CheckBox fx:id="checkAlertaTrajeto" mnemonicParsing="false" text="Notificar quando o ônibus alterar a rota" />
+                              <CheckBox fx:id="checkAlertaStatus" mnemonicParsing="false" text="Exibir Status de Lotação no Mapa" />
                            </children>
                         </VBox>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="215.0" text="Solicitar Embarque" />
                      </children>
                   </VBox>
                </children>
@@ -126,67 +156,112 @@
                <content>
                   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="390.0" prefWidth="600.0">
                      <children>
-                        <ImageView fitHeight="390.0" fitWidth="614.0" layoutX="4.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="461.0" fitWidth="663.0" layoutX="4.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@assets/mapa_600x390.png" />
                            </image>
                         </ImageView>
-                        <Polyline fx:id="rotaNormal" fill="#97f72f00" layoutX="304.0" layoutY="139.0" points="247.0, 17.0, 75.0, 11.0, -47.4000244140625, -71.19999694824219, -297.8000183105469, -97.59999084472656" strokeType="INSIDE" strokeWidth="3.0" />
-                        <Polyline fx:id="rotaDesvio" fill="#80ff0000" layoutX="256.0" layoutY="180.0" points="3.0, -110.59999084472656, -6.0, -79.0, -57.0, -70.0, -97.0, -122.0" stroke="#fc0606" strokeType="INSIDE" strokeWidth="3.0" />
-                        <Circle fx:id="iconOnibus" fill="#22ff21" layoutX="566.0" layoutY="156.0" onMouseClicked="#exibirDetalhesOnibus" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
-                        <VBox fx:id="exibirDetalhesOnibus" alignment="TOP_CENTER" layoutY="156.0" prefHeight="228.0" prefWidth="182.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0); -fx-padding: 15;">
+                        <VBox alignment="TOP_CENTER" layoutX="124.0" layoutY="45.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="423.0" style="-fx-background-color: rgba(255, 255, 255, 0.95); -fx-background-radius: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0); -fx-border-color: #ddd; -fx-border-radius: 15; -fx-border-width: 1;">
                            <children>
-                              <Label style="-fx-font-weight: bold;" text="Detalhes do Veículo">
+                              <Label text="SAJ DRIVE" textFill="#006622">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font name="System Bold" size="20.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Separator prefWidth="200.0" />
+                              <HBox alignment="CENTER" prefHeight="151.0" prefWidth="391.0">
+                                 <children>
+                                    <GridPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="150.0" prefWidth="245.0" vgap="10.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="90.0" minWidth="10.0" prefWidth="85.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="173.0" minWidth="10.0" prefWidth="163.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label text="📍 De:" textFill="#2f7c3a">
+                                             <font>
+                                                <Font name="System Bold" size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lblOrigem" text="Ponto Central" GridPane.columnIndex="1" />
+                                          <Label text="🏁 Para:" textFill="#c92a2a" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="System Bold" size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lblDestino" text="Campus IFBA" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Label text="🚌 Linha:" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lblHorario" text="04 - Urbis IV" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Label text="🕒 Horário: " GridPane.rowIndex="3">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lblLinha" text="07:30 " GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <Label text="👤 Motorista:" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lblMotorista" text="Sr. José Almeida" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                          <Label text="🔢 Placa:" GridPane.rowIndex="5">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="lblPlaca" text="PJA-2024" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                       </children>
+                                    </GridPane>
+                                    <VBox alignment="CENTER" prefHeight="144.0" prefWidth="149.0">
+                                       <children>
+                                          <Circle fill="DODGERBLUE" radius="19.0" stroke="BLACK" strokeType="INSIDE">
+                                             <VBox.margin>
+                                                <Insets top="50.0" />
+                                             </VBox.margin>
+                                          </Circle>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="182.0" spacing="10.0">
+                                             <children>
+                                                <Label text="Livre" textFill="#00ff15" />
+                                                <Label text="Moderado" textFill="#e2ea00" />
+                                                <Label prefHeight="17.0" prefWidth="41.0" text="Lotado" textFill="RED" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <Separator prefWidth="200.0">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </Separator>
+                              <Label fx:id="txtMensagensSistema" alignment="TOP_LEFT" prefHeight="19.0" prefWidth="262.0" text="O ônibus saiu do ponto da Feira, Prepare-se!!" textFill="#d06303" wrapText="true">
+                                 <font>
+                                    <Font size="13.0" />
                                  </font>
                               </Label>
-                              <VBox prefHeight="69.0" prefWidth="139.0" spacing="15.0">
-                                 <children>
-                                    <Label text="Motorista: Sr. José Almeida" />
-                                    <Label text="Placa: PJA-2024" />
-                                    <Label text="Horário: 06:00 - 22:00" />
-                                    <Label text="Status: Em Trânsito" />
-                                 </children>
-                              </VBox>
-                              <Button mnemonicParsing="false" onAction="#fecharDetalhes" text="Fechar">
-                                 <VBox.margin>
-                                    <Insets left="100.0" />
-                                 </VBox.margin>
-                              </Button>
                            </children>
+                           <padding>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </padding>
                         </VBox>
-                        <VBox fx:id="statusOnibus" layoutX="468.0" layoutY="323.0" prefHeight="38.0" prefWidth="131.0" style="-fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0); -fx-background-radius: 15;">
+                        <VBox fx:id="alertaTrajeto" layoutX="201.0" layoutY="329.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="94.0" prefWidth="270.0" style="-fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0); -fx-background-radius: 20;">
                            <children>
-                              <Label text="VERDE (Livre)" textFill="#00ff15">
-                                 <VBox.margin>
-                                    <Insets left="7.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label text="AMARELO (Moderado)" textFill="#e2ea00">
-                                 <VBox.margin>
-                                    <Insets left="7.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label text="VERMELHO (Lotado)" textFill="RED">
-                                 <VBox.margin>
-                                    <Insets left="7.0" />
-                                 </VBox.margin>
-                              </Label>
-                           </children>
-                        </VBox>
-                        <HBox fx:id="alertaEmbarque" layoutX="320.0" layoutY="5.0" prefHeight="18.0" prefWidth="283.0" style="-fx-background-color: orange; -fx-background-radius: 15;">
-                           <children>
-                              <Label prefHeight="17.0" prefWidth="321.0" style="-fx-font-weight: bold;" text="O onibus está saindo do Ponto 3. Prepare-se!">
-                                 <HBox.margin>
-                                    <Insets left="4.0" />
-                                 </HBox.margin>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <VBox fx:id="alertaTrajeto" layoutX="192.0" layoutY="289.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="94.0" prefWidth="270.0" style="-fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0); -fx-background-radius: 20;">
-                           <children>
-                              <Label style="-fx-font-weight: bold;" text="⚠Mundança no Trajeto!⚠" underline="true">
+                              <Label prefHeight="18.0" prefWidth="258.0" style="-fx-font-weight: bold;" text="⚠Mundança no Trajeto!⚠" underline="true">
                                  <VBox.margin>
                                     <Insets left="55.0" />
                                  </VBox.margin>
@@ -202,52 +277,6 @@
                                     <Button fx:id="bntCancelar" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="Cancelar" />
                                  </children>
                               </HBox>
-                           </children>
-                        </VBox>
-                        <Label layoutX="307.0" layoutY="84.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Linha 1" />
-                        <Label layoutX="233.0" layoutY="110.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Rota desvio" />
-                        <VBox alignment="TOP_CENTER" layoutX="446.0" layoutY="178.0" prefHeight="71.0" prefWidth="143.0" style="-fx-background-color: white;">
-                           <children>
-                              <Label style="-fx-background-color: white; -fx-font-weight: bold;" text="Ponto 1" />
-                              <VBox prefHeight="66.0" prefWidth="194.0">
-                                 <children>
-                                    <Label text="Nome: Ponto da Feira" />
-                                    <Label prefHeight="38.0" prefWidth="146.0" text="Horario de Embarque: 06h" />
-                                 </children>
-                              </VBox>
-                           </children>
-                        </VBox>
-                        <VBox alignment="TOP_CENTER" layoutX="391.0" layoutY="48.0" prefHeight="71.0" prefWidth="160.0" style="-fx-background-color: white;">
-                           <children>
-                              <Label style="-fx-background-color: white; -fx-font-weight: bold;" text="Ponto 2" />
-                              <VBox prefHeight="62.0" prefWidth="172.0">
-                                 <children>
-                                    <Label text="Nome: Ponto do Andaia " />
-                                    <Label prefHeight="38.0" prefWidth="161.0" text="Horario de Embarque: 06:30h" />
-                                 </children>
-                              </VBox>
-                           </children>
-                        </VBox>
-                        <VBox alignment="TOP_CENTER" layoutX="209.0" layoutY="142.0" prefHeight="71.0" prefWidth="160.0" style="-fx-background-color: white;">
-                           <children>
-                              <Label style="-fx-background-color: white; -fx-font-weight: bold;" text="Ponto 3" />
-                              <VBox prefHeight="50.0" prefWidth="153.0">
-                                 <children>
-                                    <Label text="Nome: Ponto do CSU" />
-                                    <Label prefHeight="38.0" prefWidth="161.0" text="Horario de Embarque: 07h" />
-                                 </children>
-                              </VBox>
-                           </children>
-                        </VBox>
-                        <VBox alignment="TOP_CENTER" layoutX="11.0" layoutY="63.0" prefHeight="71.0" prefWidth="160.0" style="-fx-background-color: white;">
-                           <children>
-                              <Label style="-fx-background-color: white; -fx-font-weight: bold;" text="Ponto 4" />
-                              <VBox prefHeight="50.0" prefWidth="153.0">
-                                 <children>
-                                    <Label text="Nome: Ponto do Urbis 2" />
-                                    <Label prefHeight="38.0" prefWidth="161.0" text="Horario de Embarque: 07:30h" />
-                                 </children>
-                              </VBox>
                            </children>
                         </VBox>
                      </children>
@@ -267,7 +296,7 @@
                </textFill>
             </Label>
             <Pane prefHeight="-1.0" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
-            <Label font="$x3" maxWidth="-1.0" text="Right status" textFill="$x4" HBox.hgrow="NEVER" />
+            <Label font="$x3" maxWidth="-1.0" prefWidth="137.0" text="Right status" textFill="$x4" HBox.hgrow="NEVER" />
          </children>
          <padding>
             <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
