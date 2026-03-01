@@ -1,4 +1,4 @@
-package br.edu.ifba.saj.fwads;
+package br.edu.ifba.saj.fwads.model;
 
 public enum StatusEmbarque {
     Solicitado,

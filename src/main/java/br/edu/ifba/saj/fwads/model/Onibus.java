@@ -1,4 +1,4 @@
-package br.edu.ifba.saj.fwads;
+package br.edu.ifba.saj.fwads.model;
 
 import java.util.List;
 

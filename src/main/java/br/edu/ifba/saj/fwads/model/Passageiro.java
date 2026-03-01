@@ -1,4 +1,4 @@
-package br.edu.ifba.saj.fwads;
+package br.edu.ifba.saj.fwads.model;
 
 
 public class Passageiro {
@@ -9,4 +9,10 @@ public class Passageiro {
     private boolean notificarMudancalinha;
     private boolean exibirStatusLotacao;
 
+
+
+
+
 }
+
+
