@@ -1,6 +1,6 @@
 package br.edu.ifba.saj.fwads.model;
 
-public enum StatusEmbarque {
+public enum StatusEmbarqueEnum {
     Solicitado,
     Cancelado,
     Concluido

@@ -1,6 +1,6 @@
 package br.edu.ifba.saj.fwads.model;
 
-public enum StatusEnum {
+public enum StatusLotacaoEnum {
     Livre,
     Moderado,
     Lotado
