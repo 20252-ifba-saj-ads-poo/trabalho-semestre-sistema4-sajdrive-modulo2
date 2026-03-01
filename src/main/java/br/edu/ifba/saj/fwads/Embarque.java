@@ -1,4 +1,4 @@
-package br.edu.ifba.saj.fwads.model;
+package br.edu.ifba.saj.fwads;
 
 import java.time.LocalTime;
 
@@ -8,7 +8,7 @@ public class Embarque {
     private Linha linha;
     private LocalTime horario;
     private Passageiro passageiro;
-    private StatusEmbarqueEnum status;
+    private StatusEmbarque status;
 
     
 }

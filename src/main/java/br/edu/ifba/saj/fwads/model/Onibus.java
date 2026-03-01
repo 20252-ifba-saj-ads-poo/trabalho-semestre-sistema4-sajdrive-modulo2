@@ -7,5 +7,5 @@ public class Onibus {
     private List<Motorista> listaMotoristas;
     private String placa;
     private int quantidadeEmbarque;
-    private StatusEnum status;
+    private StatusLotacaoEnum status;
 }
