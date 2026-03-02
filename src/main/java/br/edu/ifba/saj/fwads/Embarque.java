@@ -1,5 +1,6 @@
 package br.edu.ifba.saj.fwads;
 
+
 import java.time.LocalTime;
 
 public class Embarque {

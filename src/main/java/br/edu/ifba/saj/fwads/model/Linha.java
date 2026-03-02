@@ -9,4 +9,6 @@ public class Linha {
     private String nome;    
     private List<Ponto> listaDePontos;
     private String sentido;
+    private List<Viagem> listaDeViagens;
+
 }
