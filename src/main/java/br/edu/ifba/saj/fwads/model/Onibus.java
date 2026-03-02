@@ -6,5 +6,9 @@ public class Onibus {
 
     private Motorista motorista;
     private String placa;
-    private int quantidadeEmbarque;
+    private int quantidaMaximaEmbarque;
+    public int getQuantidaMaximaEmbarque() {
+        return quantidaMaximaEmbarque;
+    }
 }
+

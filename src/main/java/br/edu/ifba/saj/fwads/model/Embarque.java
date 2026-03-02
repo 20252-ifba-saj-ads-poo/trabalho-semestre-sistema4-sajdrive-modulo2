@@ -10,5 +10,17 @@ public class Embarque {
     private Passageiro passageiro;
     private StatusEmbarqueEnum status;
 
+    public Ponto getPontoOrigem() {
+        return pontoOrigem;
+    }
+
+    public Passageiro getPassageiro() {
+        return passageiro;
+    }
+
+    public StatusEmbarqueEnum getStatus() {
+        return status;
+    }
+
     
 }

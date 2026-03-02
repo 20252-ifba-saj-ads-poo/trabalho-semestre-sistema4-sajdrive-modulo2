@@ -7,7 +7,10 @@ public class Passageiro {
     private boolean receberAlertaAproximacao;
     private boolean notificarMudancalinha;
     private boolean exibirStatusLotacao;
-
+    //lista de embarques
+    public boolean isReceberAlertaAproximacao() {
+        return receberAlertaAproximacao;
+    }
 
 
 

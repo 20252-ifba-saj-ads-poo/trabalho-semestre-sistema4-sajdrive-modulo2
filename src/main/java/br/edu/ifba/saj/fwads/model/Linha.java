@@ -7,7 +7,11 @@ public class Linha {
 
     private int id;
     private String nome;    
-    private List<Ponto> listaDePontos;
+    private List<OrdinalPonto> listaDePontos;//definir ordem
     private List<Viagem> listaDeViagens;
+
+    public List<OrdinalPonto> getListaDePontos() {
+        return listaDePontos;
+    }
 
 }
