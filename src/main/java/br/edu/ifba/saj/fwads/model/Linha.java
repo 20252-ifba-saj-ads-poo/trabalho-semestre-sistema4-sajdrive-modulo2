@@ -7,9 +7,6 @@ public class Linha {
 
     private int id;
     private String nome;    
-
     private List<Ponto> listaDePontos;
-    private List<Onibus> listaOnibus;
-    private List<LocalTime> listaHorarios;    
-
+    private String sentido;
 }

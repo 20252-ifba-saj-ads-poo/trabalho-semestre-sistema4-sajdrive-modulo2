@@ -6,7 +6,7 @@ public class Embarque {
    private Ponto pontoOrigem;
     private Ponto pontoDestino;
     private Linha linha;
-    private LocalTime horario;
+    private Viagem viagem;
     private Passageiro passageiro;
     private StatusEmbarqueEnum status;
 

@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Onibus {
 
-    private List<Motorista> listaMotoristas;
+    private Motorista motorista;
     private String placa;
     private int quantidadeEmbarque;
     private StatusLotacaoEnum status;
