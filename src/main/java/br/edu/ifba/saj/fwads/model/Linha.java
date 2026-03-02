@@ -8,7 +8,6 @@ public class Linha {
     private int id;
     private String nome;    
     private List<Ponto> listaDePontos;
-    private String sentido;
     private List<Viagem> listaDeViagens;
 
 }
