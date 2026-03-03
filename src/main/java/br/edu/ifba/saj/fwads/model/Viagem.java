@@ -7,9 +7,12 @@ import java.util.List;
 public class Viagem {
     private int id;
     private Linha linha;
+    private Motorista motorista;// adiçaão do motorista na viagem, para facilitar a consulta de viagens por motorista
     private Onibus onibus;
     //TODO definir o motorista da viagem
     private LocalTime horarioSaida;//TODO um horarioa para cada OrdinalPonto
+    private OrdinalPonto pontoAtual;// adição do ponto atual para facilitar a consulta de viagens por ponto
+    private List<HorarioPonto> horarios;
     private List<Embarque> listaDeEmbarques;
     private StatusLotacaoEnum statusLotacao;
     private Ponto pontoAtual;
