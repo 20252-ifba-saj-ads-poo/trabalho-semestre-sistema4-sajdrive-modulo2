@@ -1,5 +1,6 @@
 package br.edu.ifba.saj.fwads.model;
 
+import java.util.List;
 
 public class Passageiro {
     private int id;
@@ -7,7 +8,8 @@ public class Passageiro {
     private boolean receberAlertaAproximacao;
     private boolean notificarMudancalinha;
     private boolean exibirStatusLotacao;
-    //lista de embarques
+    private List<Embarque> meusEmbarques; // Definir a relação entre passageiro e embarque, para facilitar a consulta de embarques por passageiro
+    // lista de embarques 
     public boolean isReceberAlertaAproximacao() {
         return receberAlertaAproximacao;
     }

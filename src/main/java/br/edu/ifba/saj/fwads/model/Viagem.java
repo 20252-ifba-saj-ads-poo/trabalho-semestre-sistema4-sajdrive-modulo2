@@ -15,8 +15,8 @@ public class Viagem {
     private List<HorarioPonto> horarios;
     private List<Embarque> listaDeEmbarques;
     private StatusLotacaoEnum statusLotacao;
-    private Ponto pontoAtual;
-
+ 
+    
     public Onibus getOnibus() {
         return onibus;
     }
