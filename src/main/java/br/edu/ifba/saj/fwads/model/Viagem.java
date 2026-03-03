@@ -12,7 +12,6 @@ public class Viagem {
     //TODO definir o motorista da viagem
     private LocalTime horarioSaida;//TODO um horarioa para cada OrdinalPonto
     private OrdinalPonto pontoAtual;// adição do ponto atual para facilitar a consulta de viagens por ponto
-    private List<HorarioPonto> horarios;
     private List<Embarque> listaDeEmbarques;
     private StatusLotacaoEnum statusLotacao;
  
