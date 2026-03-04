@@ -9,11 +9,11 @@ public class Viagem {
     private Linha linha;
     private Motorista motorista;// adiçaão do motorista na viagem, para facilitar a consulta de viagens por motorista
     private Onibus onibus;
-    //TODO definir o motorista da viagem
     private LocalTime horarioSaida;//TODO um horarioa para cada OrdinalPonto
     private OrdinalPonto pontoAtual;// adição do ponto atual para facilitar a consulta de viagens por ponto
     private List<Embarque> listaDeEmbarques;
     private StatusLotacaoEnum statusLotacao;
+    private OrdinalPonto pontoDesvio;  //define qual ponto da minha linha vai ter um desvio 
  
     
     public Onibus getOnibus() {

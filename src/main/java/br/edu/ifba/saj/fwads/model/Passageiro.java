@@ -9,7 +9,9 @@ public class Passageiro {
     private boolean notificarMudancalinha;
     private boolean exibirStatusLotacao;
     private List<Embarque> meusEmbarques; // Definir a relação entre passageiro e embarque, para facilitar a consulta de embarques por passageiro
-    // lista de embarques 
+
+
+    
     public boolean isReceberAlertaAproximacao() {
         return receberAlertaAproximacao;
     }
