@@ -14,7 +14,7 @@ public class Viagem {
     private List<Embarque> listaDeEmbarques;
     private StatusLotacaoEnum statusLotacao;
     private OrdinalPonto pontoDesvio;  //define qual ponto da minha linha vai ter um desvio 
- 
+    private OrdinalPonto pontoRetorno;
     
     public Onibus getOnibus() {
         return onibus;
