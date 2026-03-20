@@ -1,4 +1,4 @@
-package br.edu.ifba.saj.fwads.model;
+package br.edu.ifba.saj.fwads.model.gestaoEmbarque;
 
 import java.time.LocalTime;
 

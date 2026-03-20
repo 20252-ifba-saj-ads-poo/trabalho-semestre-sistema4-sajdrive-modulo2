@@ -1,4 +1,4 @@
-package br.edu.ifba.saj.fwads.model;
+package br.edu.ifba.saj.fwads.model.gestaoEmbarque;
 
 import java.io.ObjectInputFilter.Status;
 import java.time.LocalTime;
@@ -23,6 +23,7 @@ public class Viagem {
     public Linha getLinha() {
         return linha;
     }
+
     public void setPontoAtual(Ponto pontoAtual) {
         // sempre q trocar, notificar os interressados em embarcar no proximo ponto pela lista de OrdialPonto da linha
         int ordinalAtual = 0;
