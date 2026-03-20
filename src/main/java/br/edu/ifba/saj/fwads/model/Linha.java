@@ -6,12 +6,24 @@ import java.util.List;
 public class Linha {
 
     private int id;
-    private String nome;    
+    private String nomeLinha;    
     private List<OrdinalPonto> listaDePontos;
     private List<Viagem> listaDeViagens;
 
+    public Linha(String InomeLinha){
+        this.nomeLinha = InomeLinha;
+    }
+    
+    public String getNomeLinha(){
+        return nomeLinha;
+    }
+
     public List<OrdinalPonto> getListaDePontos() {
         return listaDePontos;
+    }
+    
+    public List<Viagem> getlistaViagems(){
+        return listaDeViagens;
     }
 
 }

@@ -1,15 +1,31 @@
 package br.edu.ifba.saj.fwads.model;
 
-import java.util.List;
 
 public class Onibus {
 
     private String placa;
-    private int quantidaMaximaEmbarque;
+    private int quantidadeMaximaEmbarque;
     
     
+    public Onibus(String Iplaca){
+        this.placa = Iplaca;
+        this.quantidadeMaximaEmbarque = 10;
+    }
+
+    public String getPlaca(){
+        return placa;
+    }
+
     public int getQuantidaMaximaEmbarque() {
-        return quantidaMaximaEmbarque;
+        return quantidadeMaximaEmbarque;
+    }
+
+    public void setPlaca(String Iplaca){
+        this.placa = Iplaca;
+    }
+
+    public void setQuantidadeMaximaEmbarque(int IQuantidadeMaximaEmbarque){
+        this.quantidadeMaximaEmbarque = IQuantidadeMaximaEmbarque;
     }
 }
 
