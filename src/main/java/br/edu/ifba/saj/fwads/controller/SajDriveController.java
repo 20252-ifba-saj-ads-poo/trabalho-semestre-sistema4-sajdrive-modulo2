@@ -1,46 +1,52 @@
 package br.edu.ifba.saj.fwads.controller;
 
+import br.edu.ifba.saj.fwads.dao.GenericDAO;
+import br.edu.ifba.saj.fwads.dao.GenericDAOImpl;
 import br.edu.ifba.saj.fwads.model.gestaoEmbarque.Viagem;
 import br.edu.ifba.saj.fwads.model.gestaoEmbarque.Embarque;
-import br.edu.ifba.saj.fwads.service.EmbarqueService;
+import br.edu.ifba.saj.fwads.service.ViagemService; // Mudamos para ViagemService
 import br.edu.ifba.saj.fwads.model.gestaoEmbarque.exceptions.CapacidadeExcedidaException;
+import br.edu.ifba.saj.fwads.model.gestaoEmbarque.exceptions.PontoInvalidoException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
+import java.util.UUID;
 
 public class SajDriveController {
 
-    // Componentes mapeados do seu arquivo FXML (ex: Monitoramento.fxml)
     @FXML private Label lblStatusLotacao;
     @FXML private Button btnRegistrarEmbarque;
 
-    private EmbarqueService embarqueService;
-    private Viagem viagemAtual; // Dados carregados simulando banco em memória
+    private ViagemService viagemService; // Agora usamos o Service correto
+    private Viagem viagemAtual; 
 
     @FXML
     public void initialize() {
-        // Inicializações simuladas para rodar o exemplo
-        this.embarqueService = new EmbarqueService();
-        // Aqui você buscaria a viagem do seu banco de dados em memória (GenericDAO)
+        // Inicialização dos DAOs em memória para respeitar a Arquitetura
+        GenericDAO<Embarque, UUID> embarqueDAO = new GenericDAOImpl<>(UUID.class);
+        GenericDAO<Viagem, UUID> viagemDAO = new GenericDAOImpl<>(UUID.class);
+        
+        // Injeção de dependência: O Service agora tem capacidade de salvar dados!
+        this.viagemService = new ViagemService(embarqueDAO, viagemDAO);
     }
 
     @FXML
     public void handleRegistrarEmbarque() {
         try {
-            Embarque novoEmbarque = new Embarque(); // Preencheria com dados da tela
+            Embarque novoEmbarque = new Embarque(); 
             
-            // Passamos a responsabilidade para a camada de Negócio
-            embarqueService.registrarEmbarque(viagemAtual, novoEmbarque);
+            // Usamos o viagemService que lida com todos os requisitos (RF23, 24, 25)
+            viagemService.registrarEmbarque(viagemAtual, novoEmbarque);
             
-            // Atualiza a UI se o embarque for bem sucedido
             lblStatusLotacao.setText("Status: " + viagemAtual.calcularStatusLotacao().toString());
             lblStatusLotacao.setStyle("-fx-text-fill: green;");
 
-        } catch (CapacidadeExcedidaException e) {
-            // Separação de responsabilidades: A interface só mostra o erro que o Negócio identificou
-            mostrarAlertaErro("Falha no Embarque", e.getMessage());
+        // Capturamos DUAS exceções diferentes agora (Lotação e Ponto Inválido)
+        } catch (CapacidadeExcedidaException | PontoInvalidoException e) {
+            mostrarAlertaErro("Regra de Negócio Violada", e.getMessage());
             lblStatusLotacao.setStyle("-fx-text-fill: red;");
+            
         } catch (Exception e) {
             mostrarAlertaErro("Erro Inesperado", "Ocorreu um erro ao processar o embarque.");
         }

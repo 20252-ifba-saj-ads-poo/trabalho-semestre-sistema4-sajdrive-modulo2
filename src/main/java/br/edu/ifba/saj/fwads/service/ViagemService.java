@@ -9,6 +9,7 @@ import br.edu.ifba.saj.fwads.model.gestaoEmbarque.exceptions.CapacidadeExcedidaE
 import br.edu.ifba.saj.fwads.model.gestaoEmbarque.exceptions.PontoInvalidoException;
 import br.edu.ifba.saj.fwads.model.gestaoEmbarque.exceptions.DesvioRotaException;
 
+import java.util.List;
 import java.util.UUID;
 
 public class ViagemService {
@@ -53,39 +54,7 @@ public class ViagemService {
     /**
      * RF24 (Alerta de Trajeto)
      */
-    public void atualizarLocalizacao(Viagem viagem, Ponto novoPonto) throws DesvioRotaException {
-        
-        // --- Validação do RF24 (Alerta de Trajeto) ---
-        // Se o motorista registrar passagem num ponto que não está na linha, é um desvio.
-        boolean pontoPertenceARota = validarPontoNaLinha(viagem, novoPonto);
-
-        if (!pontoPertenceARota) {
-            throw new DesvioRotaException("ALERTA DE TRAJETO: O ônibus desviou da rota oficial! O ponto atual não faz parte da linha.");
-        }
-
-        // --- Efetivação e Persistência ---
-        viagem.setPontoAtual(novoPonto);
-        viagemDAO.salvar(viagem);
-    }
-
-    // Método utilitário privado (Encapsulamento da lógica de busca)
-    private boolean validarPontoNaLinha(Viagem viagem, Ponto pontoProcurado) {
-        if (pontoProcurado == null || viagem.getLinha() == null || viagem.getLinha().getParadas() == null) {
-            return false;
-        }
-        
-        // Percorre as paradas da linha para ver se o ponto existe nela
-        for (ParadaOnibus parada : viagem.getLinha().getParadas()) {
-            if (parada.getPonto().getId().equals(pontoProcurado.getId())) {
-                return true;
-            }
-        }
-        return false;
-    }
-}
-
-public void atualizarLocalizacao(Viagem viagem, Ponto novoPonto) throws DesvioRotaException {
-    
+     
     // 1. Obtém a lista de paradas da linha oficial do ônibus
     List<ParadaOnibus> paradasDaLinha = viagem.getLinha().getParadas();
     
@@ -107,3 +76,18 @@ public void atualizarLocalizacao(Viagem viagem, Ponto novoPonto) throws DesvioRo
     // 5. Salva a atualização na Camada de Dados (Memória)
     viagemDAO.salvar(viagem);
 }
+
+    // Método utilitário privado (Encapsulamento da lógica de busca)
+    private boolean validarPontoNaLinha(Viagem viagem, Ponto pontoProcurado) {
+        if (pontoProcurado == null || viagem.getLinha() == null || viagem.getLinha().getParadas() == null) {
+            return false;
+        }
+        
+        // Percorre as paradas da linha para ver se o ponto existe nela
+        for (ParadaOnibus parada : viagem.getLinha().getParadas()) {
+            if (parada.getPonto().getId().equals(pontoProcurado.getId())) {
+                return true;
+            }
+        }
+        return false;
+    }

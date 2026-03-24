@@ -15,13 +15,16 @@ public class Viagem extends AbstractModel<UUID> {
     private List<Embarque> passageirosEmbarcados;
     private String horarioPartida;
     private boolean emAndamento;
+    private int indiceProximaParada;
 
    
     public Viagem() {
         super();
         this.passageirosEmbarcados = new ArrayList<>();
         this.emAndamento = false;
+        this.indiceProximaParada = 0;
     }
+    
 
     
     public Viagem(Onibus onibus, Linha linha, Motorista motorista) {
@@ -108,10 +111,15 @@ public class Viagem extends AbstractModel<UUID> {
     public void setEmAndamento(boolean emAndamento) { 
         this.emAndamento = emAndamento; 
     }
-
+    public int getIndiceProximaParada() {
+        return indiceProximaParada;
+    }
     @Override
     public String toString() {
         return "Viagem da Linha: " + (linha != null ? linha.getNomeLinha() : "N/A") + 
                " | Ônibus: " + (onibus != null ? onibus.getPlaca() : "N/A");
     }
 }
+public void setIndiceProximaParada(int indiceProximaParada) {
+        this.indiceProximaParada = indiceProximaParada;
+    }
