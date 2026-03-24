@@ -111,15 +111,19 @@ public class Viagem extends AbstractModel<UUID> {
     public void setEmAndamento(boolean emAndamento) { 
         this.emAndamento = emAndamento; 
     }
+    
     public int getIndiceProximaParada() {
         return indiceProximaParada;
+    } 
+    
+    public void setIndiceProximaParada(int indiceProximaParada) {
+        this.indiceProximaParada = indiceProximaParada;
     }
+    
     @Override
     public String toString() {
         return "Viagem da Linha: " + (linha != null ? linha.getNomeLinha() : "N/A") + 
                " | Ônibus: " + (onibus != null ? onibus.getPlaca() : "N/A");
     }
-}
-public void setIndiceProximaParada(int indiceProximaParada) {
-        this.indiceProximaParada = indiceProximaParada;
-    }
+
+ } 

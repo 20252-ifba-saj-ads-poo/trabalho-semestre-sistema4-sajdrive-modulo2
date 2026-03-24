@@ -54,7 +54,7 @@ public class ViagemService {
     /**
      * RF24 (Alerta de Trajeto)
      */
-     
+     public void atualizarLocalizacao(Viagem viagem, Ponto novoPonto) throws DesvioRotaException {
     // 1. Obtém a lista de paradas da linha oficial do ônibus
     List<ParadaOnibus> paradasDaLinha = viagem.getLinha().getParadas();
     
