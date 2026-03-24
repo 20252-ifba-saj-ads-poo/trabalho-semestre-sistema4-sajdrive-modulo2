@@ -1,22 +1,27 @@
 package br.edu.ifba.saj.fwads.model.gestaoEmbarque;
 
-import java.time.LocalTime; 
+import br.edu.ifba.saj.fwads.model.gestaoEmbarque.AbstractModel;
+import java.util.UUID;
 
-public class Motorista {
+public class Motorista extends AbstractModel<UUID> {
+    private String nome;
 
-    private int id;
-    private String nomeMotorista;    
+
+    public Motorista() {
+        super(); 
+    }
+
+    public Motorista(String nome, String cnh) {
+        this();
+        this.nome = nome;
+    }
+
+    public String getNome() { 
+        return nome; 
+    }
     
-
-    public Motorista(String InomeMotorista){
-        this.nomeMotorista = InomeMotorista;
+    public void setNome(String nome) { 
+        this.nome = nome; 
     }
-
-    public String getNomeMotorista(){
-        return nomeMotorista;
-    }
-
-    public void setNomeMotorista(String InomeMotorista){
-        this.nomeMotorista = InomeMotorista;
-    }
+    
 }

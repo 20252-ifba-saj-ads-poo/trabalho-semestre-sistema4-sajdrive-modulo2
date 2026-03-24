@@ -1,14 +1,13 @@
 package br.edu.ifba.saj.fwads.model.gestaoEmbarque;
 
-import java.time.LocalTime; 
+
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Linha {
-
-    private int id;
     private String nomeLinha;    
-    private List<OrdinalPonto> listaDePontos;
-    private List<Viagem> listaDeViagens;
+    private List<ParadaOnibus> paradas;
 
     public Linha(String InomeLinha){
         this.nomeLinha = InomeLinha;
@@ -18,7 +17,7 @@ public class Linha {
         return nomeLinha;
     }
 
-    public List<OrdinalPonto> getListaDePontos() {
+    public List<ParadaOnibus> getListaDePontos() {
         return listaDePontos;
     }
     

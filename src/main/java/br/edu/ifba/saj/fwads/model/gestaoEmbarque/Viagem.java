@@ -1,72 +1,117 @@
 package br.edu.ifba.saj.fwads.model.gestaoEmbarque;
 
-import java.io.ObjectInputFilter.Status;
-import java.time.LocalTime;
+import br.edu.ifba.saj.fwads.model.gestaoEmbarque.AbstractModel;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-public class Viagem {
-    private int id;
-    private Linha linha;
-    private Motorista motorista;// adiçaão do motorista na viagem, para facilitar a consulta de viagens por motorista
+
+public class Viagem extends AbstractModel<UUID> {
+
     private Onibus onibus;
-    private LocalTime horarioSaida;//TODO um horarioa para cada OrdinalPonto
-    private OrdinalPonto pontoAtual;// adição do ponto atual para facilitar a consulta de viagens por ponto
-    private List<Embarque> listaDeEmbarques;
-    private StatusLotacaoEnum statusLotacao;
-    private OrdinalPonto pontoDesvio;  //define qual ponto da minha linha vai ter um desvio 
-    private OrdinalPonto pontoRetorno;
+    private Motorista motorista;
+    private Linha linha;
+    private Ponto pontoAtual; // Onde o ônibus está agora no mapa
+    private List<Embarque> passageirosEmbarcados;
+    private String horarioPartida;
+    private boolean emAndamento;
+
+   
+    public Viagem() {
+        super();
+        this.passageirosEmbarcados = new ArrayList<>();
+        this.emAndamento = false;
+    }
+
     
-    public Onibus getOnibus() {
-        return onibus;
+    public Viagem(Onibus onibus, Linha linha, Motorista motorista) {
+        this();
+        this.onibus = onibus;
+        this.linha = linha;
+        this.motorista = motorista;
+        this.emAndamento = true;
     }
 
-    public Linha getLinha() {
-        return linha;
+    
+
+  
+    public StatusLotacaoEnum calcularStatusLotacao() {
+        if (onibus == null || onibus.getLotacaoMaxima() <= 0) {
+            return StatusLotacaoEnum.LIVRE;
+        }
+
+        int totalPassageiros = passageirosEmbarcados.size();
+        double percentualOcupacao = (double) totalPassageiros / onibus.getLotacaoMaxima();
+
+        if (percentualOcupacao >= 1.0) {
+            return StatusLotacaoEnum.LOTADO; 
+        } else if (percentualOcupacao >= 0.7) {
+            return StatusLotacaoEnum.MODERADO; 
+        } else {
+            return StatusLotacaoEnum.LIVRE;
+        }
     }
 
-    public void setPontoAtual(Ponto pontoAtual) {
-        // sempre q trocar, notificar os interressados em embarcar no proximo ponto pela lista de OrdialPonto da linha
-        int ordinalAtual = 0;
-        for (OrdinalPonto ordinalPonto : getLinha().getListaDePontos()) {
-            if(ordinalPonto.getPonto().equals(pontoAtual)){
-               ordinalAtual = ordinalPonto.getOrdinal();
-            }
-            
-        } 
-        //se ordinal começa em 1 
-        Ponto proximoPonto = getLinha().getListaDePontos().get(ordinalAtual).getPonto();
+    
 
-      for (Embarque embarque : listaDeEmbarques) {
-        if (embarque.getPontoOrigem().equals(proximoPonto)) {
-            if (embarque.getPassageiro().isReceberAlertaAproximacao()) {
-                
-                //TODO notificar passageiro
-
-                
-            }
-            
-        }
-      }
-
-        // buscar passageiros que querem embarcar nesse ponto;
-
-        this.pontoAtual = pontoAtual;
+    public Onibus getOnibus() { 
+        return onibus; 
     }
-    public StatusLotacaoEnum getStatusLotacao() {
-        int embarcados = 0;
-        
-        for (Embarque embarque : listaDeEmbarques) {
-            
-            if (embarque.getStatus().equals(StatusEmbarqueEnum.Concluido)) {
-                embarcados++;
-            };
-        }
 
-        if(embarcados/getOnibus().getQuantidaMaximaEmbarque() > 0.5){
-            return StatusLotacaoEnum.Moderado;
-        }
-        //TODO criar outras condicionais
+    public void setOnibus(Onibus onibus) 
+    { 
+        this.onibus = onibus; 
 
+    }
 
+    public Motorista getMotorista() { 
+        return motorista; 
+    }
+
+    public void setMotorista(Motorista motorista) 
+    { 
+        this.motorista = motorista; 
+    }
+
+    public Linha getLinha() { 
+        return linha; 
+    }
+    public void setLinha(Linha linha) {
+       
+        this.linha = linha; 
+
+    }
+
+    public Ponto getPontoAtual() { 
+        return pontoAtual; 
+    }
+
+    public void setPontoAtual(Ponto pontoAtual) { 
+        this.pontoAtual = pontoAtual; 
+    }
+
+    public List<Embarque> getPassageirosEmbarcados() { 
+        return passageirosEmbarcados; 
+    }
+
+    public String getHorarioPartida() { 
+        return horarioPartida; 
+    }
+
+    public void setHorarioPartida(String horarioPartida) { 
+        this.horarioPartida = horarioPartida; 
+    }
+
+    public boolean isEmAndamento() { 
+        return emAndamento; 
+    }
+    public void setEmAndamento(boolean emAndamento) { 
+        this.emAndamento = emAndamento; 
+    }
+
+    @Override
+    public String toString() {
+        return "Viagem da Linha: " + (linha != null ? linha.getNomeLinha() : "N/A") + 
+               " | Ônibus: " + (onibus != null ? onibus.getPlaca() : "N/A");
     }
 }

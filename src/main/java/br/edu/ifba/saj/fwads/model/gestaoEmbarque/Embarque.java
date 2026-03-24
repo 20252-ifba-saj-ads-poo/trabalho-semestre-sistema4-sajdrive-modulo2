@@ -1,63 +1,50 @@
 package br.edu.ifba.saj.fwads.model.gestaoEmbarque;
 
-import java.time.LocalTime;
 
-public class Embarque {
-   private Ponto pontoOrigem;
-    private Ponto pontoDestino;
-    private Viagem viagem;
+import br.edu.ifba.saj.fwads.model.gestaoEmbarque.AbstractModel;
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+public class Embarque extends AbstractModel<UUID> {
     private Passageiro passageiro;
-    private StatusEmbarqueEnum status;
+    private Ponto pontoOrigem;
+    private Ponto pontoDestino;
+    private LocalDateTime horarioSolicitacao;
 
-
-    public Embarque(Ponto IpontoOrigem, Ponto IpontoDestino, Viagem Iviagem, Passageiro Ipassageiro, StatusEmbarqueEnum Istatus){
-
-        this.pontoOrigem = IpontoOrigem;
-        this.pontoDestino = IpontoDestino;
-        this.viagem = Iviagem;
-        this.passageiro = Ipassageiro;
-        this.status = Istatus;
+    public Embarque() {
+        super();
+        this.horarioSolicitacao = LocalDateTime.now();
     }
 
-    public void setPontoOrigem(Ponto IPontoOrigemPonto) {
-        this.pontoOrigem = IPontoOrigemPonto;
-    }
-
-    public void setPontoDestino(Ponto IpontoDestino){
-        this.pontoDestino = IpontoDestino;
-    }
-
-    public void setViagem(Viagem Iviagem){
-        this.viagem = Iviagem;
-    }
-
-    public void setPassageiro(Passageiro Ipassageiro) {
-        this.passageiro = Ipassageiro;
-    }
-
-    public void setStatusEmbarque(StatusEmbarqueEnum IstatusEmbarqueEnum) {
-        this.status = IstatusEmbarqueEnum;
-    }
-
-    public Ponto getPontoOrigem() {
-        return pontoOrigem;
-    }
-
-    public Ponto getPontoDestino(){
-        return pontoDestino;
-    }
-
-    public Viagem getViagem(){
-        return viagem;
-    }
-
-    public Passageiro getPassageiro() {
-        return passageiro;
-    }
-
-    public StatusEmbarqueEnum getStatus() {
-        return status;
+    public Embarque(Passageiro passageiro, Ponto origem, Ponto destino) {
+        this();
+        this.passageiro = passageiro;
+        this.pontoOrigem = origem;
+        this.pontoDestino = destino;
     }
 
     
+    public Passageiro getPassageiro() { 
+        return passageiro; 
+    }
+
+    public void setPassageiro(Passageiro p) { 
+        this.passageiro = p; 
+    }
+
+    public Ponto getPontoOrigem() {
+        return pontoOrigem; 
+    }
+
+    public void setPontoOrigem(Ponto o) {
+        this.pontoOrigem = o;
+    }
+    
+    public Ponto getPontoDestino() { 
+        return pontoDestino; 
+    }
+
+    public void setPontoDestino(Ponto d) { 
+        this.pontoDestino = d; 
+    }
 }

@@ -1,41 +1,59 @@
 package br.edu.ifba.saj.fwads.model.gestaoEmbarque;
 
-import java.util.List;
+import br.edu.ifba.saj.fwads.model.gestaoEmbarque.AbstractModel;
+import java.util.UUID;
 
-public class Passageiro {
-    private int id;
-    private String nomePassageiro;    
+public class Passageiro extends AbstractModel<UUID> {
+    private String nome;
     private boolean receberAlertaAproximacao;
-    private boolean notificarMudancalinha;
-    private boolean exibirStatusLotacao;
-    private List<Embarque> meusEmbarques; // Definir a relação entre passageiro e embarque, para facilitar a consulta de embarques por passageiro
+    private boolean receberAlertaDesvio;
+    private boolean exibirLotacao;
 
-
-    public Passageiro(String InomePassageiro){
-        this.nomePassageiro = InomePassageiro;
+    public Passageiro() {
+        super();
+        
         this.receberAlertaAproximacao = true;
-        this.notificarMudancalinha = true;
-        this.exibirStatusLotacao = true;
+        this.receberAlertaDesvio = true;
+        this.exibirLotacao = true;
     }
-    
-    public boolean isReceberAlertaAproximacao() {
+
+    public Passageiro(String nome, String email) {
+        this();
+        this.nome = nome;
+    }
+
+    // Getters e Setters
+    public String getNome() {
+        return nome; 
+    }
+
+    public void setNome(String nome) { 
+        this.nome = nome; 
+    }
+
+    public boolean isReceberAlertaAproximacao() { 
         return receberAlertaAproximacao;
+     
     }
 
-    public boolean isNotifiicacaoMudancaLinha(){
-        return notificarMudancalinha;
+    public void setReceberAlertaAproximacao(boolean status) { 
+        this.receberAlertaAproximacao = status; 
     }
 
-    public boolean isExibirStatusLotacao(){
-        return exibirStatusLotacao;
+    public boolean isReceberAlertaDesvio() { 
+        return receberAlertaDesvio; 
+    }
+    public void setReceberAlertaDesvio(boolean status) { 
+        this.receberAlertaDesvio = status; 
     }
 
-    public List<Embarque> getMeusEmbarques(){
-        return meusEmbarques;
+    public boolean isExibirLotacao() { 
+        return exibirLotacao; 
     }
 
-
-
+    public void setExibirLotacao(boolean status) { 
+        this.exibirLotacao = status; 
+    }
 }
 
 

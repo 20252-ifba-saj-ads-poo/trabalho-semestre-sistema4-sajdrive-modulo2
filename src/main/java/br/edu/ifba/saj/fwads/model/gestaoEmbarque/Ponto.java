@@ -1,22 +1,39 @@
 package br.edu.ifba.saj.fwads.model.gestaoEmbarque;
 
-import java.time.LocalTime;
+import br.edu.ifba.saj.fwads.model.gestaoEmbarque.AbstractModel;
+import java.util.UUID;
 
-public class Ponto {
+public class Ponto extends AbstractModel<UUID> {
+    private String nome;
+    private String endereco;
+
+    public Ponto() { 
+        super(); 
+    }
+
+    public Ponto(String nome, String endereco) {
+        this();
+        this.nome = nome;
+        this.endereco = endereco;
+    }
+
+    public String getNome() { 
+        return nome; 
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome; 
+    }
+
+    public String getEndereco() { 
+        return endereco; 
+    }
+    public void setEndereco(String endereco) 
+    { 
+        this.endereco = endereco; }
     
-    private int id;
-    private String nomePonto;
-
-
-    public Ponto(String InomePonto){
-        this.nomePonto = InomePonto;
-    }
-
-    public String getNomePonto(){
-        return nomePonto;
-    }
-
-    public void setNomePonto(String InomePonto){
-        this.nomePonto = InomePonto;
+    @Override
+    public String toString() { 
+        return nome; 
     }
 }
