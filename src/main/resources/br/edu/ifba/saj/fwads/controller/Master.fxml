@@ -110,5 +110,20 @@
                </graphic>
             </Button>
          </children></VBox>
-   </left>
+  <Button alignment="TOP_LEFT" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showMonitoramento" prefHeight="35.0" styleClass="btn-menu" stylesheets="@assets/style.css" text="Monitoramento" textFill="WHITE">
+               <padding>
+                  <Insets bottom="5.0" left="10.0" />
+               </padding>
+               <font>
+                  <Font size="25.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/BUS.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button> 
+         </left>
 </BorderPane>
